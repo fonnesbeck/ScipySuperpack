@@ -1,14 +1,10 @@
 #!/bin/sh
 PYTHON=/usr/bin/python
-SERVER=http://dl.dropbox.com/u/233041/PyMC
+SERVER=https://github.com/fonnesbeck/ScipySuperpack/raw/master
 
 echo 'Would you like to install gFortran (recommended, and required if not already installed)? (y/n)'
 read install
 if  [ "$install" == "y" ] || [ "$install" == "Y" ]; then
-  # echo 'Downloading gcc ...'
-  # curl -o gcc-42-5666.3-darwin11.pkg http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg
-  # echo 'Installing gcc ...'
-  # sudo installer -pkg 'gcc-42-5666.3-darwin11.pkg' -target '/'  
   echo 'Downloading gFortran ...'
   curl -o gfortran-lion-5666-3.pkg http://r.research.att.com/gfortran-lion-5666-3.pkg
   echo 'Installing gFortran ...'
