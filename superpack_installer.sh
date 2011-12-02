@@ -1,6 +1,6 @@
 #!/bin/sh
 PYTHON=/usr/bin/python
-SERVER=https://github.com/fonnesbeck/ScipySuperpack/raw/master
+SERVER=http://dl.dropbox.com/u/233041
 
 echo 'Would you like to install gFortran (recommended, and required if not already installed)? (y/n)'
 read install
