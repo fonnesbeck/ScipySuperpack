@@ -1,101 +1,98 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<head>
-  <meta charset='utf-8'>
-
-  <title>fonnesbeck/ScipySuperpack @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #dadc9e;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #252361; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #252361; }
-    h3 { text-align: center; color: #252361; }
-    a { color: #252361; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
-
-<body>
-  <a href="https://github.com/fonnesbeck/ScipySuperpack"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="https://github.com/fonnesbeck/ScipySuperpack/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/fonnesbeck/ScipySuperpack/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="https://github.com/fonnesbeck/ScipySuperpack">Scipy Superpack</a>
-      <!-- <span class="small">by <a href="https://github.com/fonnesbeck">fonnesbeck</a></span> -->
-    </h1>
-
-    <div class="description">
-      Recent builds of fundamental Python scientific computing packages for OS X
-    </div>
-
-    
-    <img src="images/superpack_installer.png">
-
-
-    <p>This shell script will install recent 64-bit builds of  <a href="http://numpy.scipy.org">Numpy</a> (2.0) and <a href="http://scipy.org/">Scipy</a> (0.11), <a href="http://matplotlib.sourceforge.net">Matplotlib</a> (1.2), <a href="http://ipython.org">iPython</a> (0.12), <a href="http://pandas.sourceforge.net/">Pandas</a> (0.6), as well as <a href="https://github.com/pymc-devs/pymc">PyMC</a> (2.2 alpha) for OS X 10.7 (Lion) on Intel Macintosh. All builds are based on recent development code from each package, which means though some bugs may be fixed and features added, they also may be more unstable than the official releases. Distributing them together should improve interoperability, since the supporting packages (Scipy, Matplotlib, PyMC) were all built against the accompanying build of Numpy. These packages were compiled on OS X 10.7 using Apple&#8217;s Python 2.7.1, gFortran 4.2.3 and LLVM-GCC 4.2.1 (build 5658). To avoid compatibility issues, the installer also optionally downloads and installs the gFortran compiler that is compatible with Xcode 4.2. Before you install the Superpack, ensure that <a href="http://itunes.apple.com/us/app/xcode/id448457090?mt=12">Xcode 4.2</a> is installed on your system.</p>
-
-    <blockquote>
-      <p>Caveat emptor: <em>These builds contain development (i.e. pre-release) code that may not be free of critical bugs. I encourage all users to run the appropriate unit tests on each package to ensure that any extant issues do not affect your work. Please report any errors that may be the result of build issues.</em></p>
-    </blockquote>
-
-    
-      <h2>Dependencies</h2>
-      <p>OS X 10.7 (Lion), Python 2.7, Xcode 4.2</p>
-    
-
-    
-      <h2>Install</h2>
-      <p><a href="https://raw.github.com/fonnesbeck/ScipySuperpack/master/superpack_installer.sh">Download Scipy Superpack Installer for OSX 10.7</a> <em>(Updated 30 November 2011)</em></p>
-
-      <p>To install, open a terminal in the directory that the script is located and call:</p>
-
-      <p><em>sh superpack_installer.sh</em></p>
-
-      <p>You will be prompted for your administrator password. If you have already installed the current gFortran, you can bypass that package during the install process.</p>
-
-    
-      <h2>Contact</h2>
-      <p>Chris Fonnesbeck (chris.fonnesbeck@vanderbilt.edu) or follow me on Twitter (<a href="https://twitter.com/#!/fonnesbeck">@fonnesbeck</a>)</p>
-    
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="https://github.com/fonnesbeck/ScipySuperpack/zipball/master">zip</a> or
-      <a href="https://github.com/fonnesbeck/ScipySuperpack/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/fonnesbeck/ScipySuperpack</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/fonnesbeck/ScipySuperpack">fonnesbeck/ScipySuperpack</a>
-    </div>
-
-  </div>
-
-</body>
+    <head>
+        <meta charset='utf-8'>
+        <title>
+            fonnesbeck/ScipySuperpack @ GitHub
+        </title>
+        <style type="text/css">
+body {
+        margin-top: 1.0em;
+        background-color: #dadc9e;
+        font-family: Helvetica, Arial, FreeSans, san-serif;
+        color: #000000;
+        }
+        #container {
+        margin: 0 auto;
+        width: 700px;
+        }
+        h1 { font-size: 3.8em; color: #252361; margin-bottom: 3px; }
+        h1 .small { font-size: 0.4em; }
+        h1 a { text-decoration: none }
+        h2 { font-size: 1.5em; color: #252361; }
+        h3 { text-align: center; color: #252361; }
+        a { color: #252361; }
+        .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+        .download { float: right; }
+        pre { background: #000; color: #fff; padding: 15px;}
+        hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+        .footer { text-align:center; padding-top:30px; font-style: italic; }
+        </style>
+    </head>
+    <body>
+        <p>
+            <a href="https://github.com/fonnesbeck/ScipySuperpack"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+        </p>
+        <div id="container">
+            <div class="download">
+                <a href="https://github.com/fonnesbeck/ScipySuperpack/zipball/master"><img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a> <a href="https://github.com/fonnesbeck/ScipySuperpack/tarball/master"><img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+            </div>
+            <h1>
+                <a href="https://github.com/fonnesbeck/ScipySuperpack">Scipy Superpack</a> <!-- <span class="small">by <a href="https://github.com/fonnesbeck">fonnesbeck</a></span> -->
+            </h1>
+            <div class="description">
+                Recent builds of fundamental Python scientific computing packages for OS X
+            </div><img src="images/superpack_installer.png">
+            <p>
+                This shell script will install recent 64-bit builds of <a href="http://numpy.scipy.org">Numpy</a> (2.0) and <a href="http://scipy.org/">Scipy</a> (0.11), <a href="http://matplotlib.sourceforge.net">Matplotlib</a> (1.2), <a href="http://ipython.org">iPython</a> (0.12), <a href="http://pandas.sourceforge.net/">Pandas</a> (0.6), as well as <a href="https://github.com/pymc-devs/pymc">PyMC</a> (2.2 alpha) for OS X 10.7 (Lion) on Intel Macintosh. All builds are based on recent development code from each package, which means though some bugs may be fixed and features added, they also may be more unstable than the official releases. Distributing them together should improve interoperability, since the supporting packages (Scipy, Matplotlib, PyMC) were all built against the accompanying build of Numpy. These packages were compiled on OS X 10.7 using Apple’s Python 2.7.1, gFortran 4.2.3 and LLVM-GCC 4.2.1 (build 5658). To avoid compatibility issues, the installer also optionally downloads and installs the gFortran compiler that is compatible with Xcode 4.2. Before you install the Superpack, ensure that <a href="http://itunes.apple.com/us/app/xcode/id448457090?mt=12">Xcode 4.2</a> is installed on your system.
+            </p>
+            <blockquote>
+                <p>
+                    Caveat emptor: <em>These builds contain development (i.e. pre-release) code that may not be free of critical bugs. I encourage all users to run the appropriate unit tests on each package to ensure that any extant issues do not affect your work. Please report any errors that may be the result of build issues.</em>
+                </p>
+            </blockquote>
+            <h2>
+                Dependencies
+            </h2>
+            <p>
+                OS X 10.7 (Lion), Python 2.7, Xcode 4.2
+            </p>
+            <h2>
+                Install
+            </h2>
+            <p>
+                <a href="https://raw.github.com/fonnesbeck/ScipySuperpack/master/superpack_installer.sh">Download Scipy Superpack Installer for OSX 10.7</a> <em>(Updated 30 November 2011)</em>
+            </p>
+            <p>
+                To install, open a terminal in the directory that the script is located and call:
+            </p>
+            <blockquote>
+                <em>sh superpack_installer.sh</em>
+            </blockquote>
+            <p>
+                You will be prompted for your administrator password. If you have already installed the current gFortran, you can bypass that package during the install process.
+            </p>
+            <h2>
+                Contact
+            </h2>
+            <p>
+                Chris Fonnesbeck (chris.fonnesbeck@vanderbilt.edu) or follow me on Twitter (<a href="https://twitter.com/#!/fonnesbeck">@fonnesbeck</a>)
+            </p>
+            <h2>
+                Download
+            </h2>
+            <p>
+                You can download this project in either <a href="https://github.com/fonnesbeck/ScipySuperpack/zipball/master">zip</a> or <a href="https://github.com/fonnesbeck/ScipySuperpack/tarball/master">tar formats.</a>
+            </p><a href="https://github.com/fonnesbeck/ScipySuperpack/tarball/master"></a>
+            <p>
+                You can also clone the project with <a href="http://git-scm.com">Git</a> by running:
+            </p>
+            <pre>
+$ git clone git://github.com/fonnesbeck/ScipySuperpack
+</pre>
+            <div class="footer">
+                get the source code on GitHub : <a href="https://github.com/fonnesbeck/ScipySuperpack">fonnesbeck/ScipySuperpack</a>
+            </div>
+        </div>
+    </body>
 </html>
