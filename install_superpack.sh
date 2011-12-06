@@ -24,6 +24,8 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
         hdiutil mount ${GIT_DMG}
         sudo installer -pkg "${GIT_VOLUME}${GIT_PKG}" -target '/'
         hdiutil unmount "${GIT_VOLUME}"
+        echo 'Cleaning up'
+        rm ${GIT_DMG}
 
     elif [ "$install_git" == "n" ] || [ "$install_git" == "N" ]; then
       echo 'Skipping Git install.'
