@@ -22,5 +22,5 @@ You will be prompted for your administrator password. If you have already instal
 
 ### Contact
 
-Chris Fonnesbeck (<chris.fonnesbeck@vanderbilt.edu>) or follow me on Twitter ([@fonnesbeck](twitter.com/fonnesbeck))
+Contact [Chris Fonnesbeck](https://github.com/fonnesbeck) or follow me on Twitter ([@fonnesbeck](twitter.com/fonnesbeck))
 
