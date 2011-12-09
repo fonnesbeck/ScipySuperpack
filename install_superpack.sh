@@ -1,7 +1,6 @@
 #!/bin/sh
 PYTHON='/usr/bin/python'
-GIT_DMG='git-1.7.7.3-intel-universal-snow-leopard.dmg'
-GIT_PKG='git-1.7.7.3-intel-universal-snow-leopard.pkg'
+GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
 GFORTRAN='gfortran-lion-5666-3.pkg'
 SUDO='sudo'
@@ -29,13 +28,13 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
     hash git &> /dev/null
     if [ $? -eq 1 ]; then
         echo 'Downloading Git for OS X ...'
-        curl -o ${GIT_DMG} http://git-osx-installer.googlecode.com/files/${GIT_DMG}
+        curl -o ${GIT_FILENAME}.dmg http://git-osx-installer.googlecode.com/files/${GIT_FILENAME}.dmg
         echo 'Installing Git ...'
-        hdiutil mount ${GIT_DMG}
-        ${SUDO} installer -pkg "${GIT_VOLUME}${GIT_PKG}" -target '/'
+        hdiutil mount ${GIT_FILENAME}.dmg
+        ${SUDO} installer -pkg "${GIT_VOLUME}${GIT_FILENAME}.pkg" -target '/'
         hdiutil unmount "${GIT_VOLUME}"
         echo 'Cleaning up'
-        rm ${GIT_DMG}
+        rm ${GIT_FILENAME}.dmg
     fi
     
     echo 'Cloning Scipy Superpack'
