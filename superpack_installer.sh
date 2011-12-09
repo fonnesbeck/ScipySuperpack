@@ -1,5 +1,15 @@
 #!/bin/sh
-PYTHON=/usr/bin/python
+
+if [ -z "$VIRTUAL_ENV" ]; then
+    # Standard Python env
+    PYTHON=/usr/bin/python
+    SUDO=sudo
+else
+    # Virtualenv
+    PYTHON=python
+    SUDO="" #sudo is not required in a virtualenv
+fi
+
 SERVER=http://dl.dropbox.com/u/233041/ScipySuperpack
 
 echo 'Would you like to install gFortran (recommended, and required if not already installed)? (y/n)'
@@ -16,26 +26,30 @@ else
   echo 'Did not recognize input. Exiting'
   exit 0
 fi
-echo 'Downloading ez_setup ...'
-curl -o ez_setup.py http://peak.telecommunity.com/dist/ez_setup.py
-echo 'Installing ez_setup ...'
-sudo "${PYTHON}" ez_setup.py
+
+if [ -z "$VIRTUAL_ENV" ]; then
+    echo 'Downloading ez_setup ...'
+    curl -o ez_setup.py http://peak.telecommunity.com/dist/ez_setup.py
+    echo 'Installing ez_setup ...'
+    ${SUDO} "${PYTHON}" ez_setup.py
+fi
+
 echo 'Installing numpy ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/numpy-2.0.0.dev_eb46577_20111130-py2.7-macosx-10.7-x86_64.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/numpy-2.0.0.dev_eb46577_20111130-py2.7-macosx-10.7-x86_64.egg
 echo 'Installing matplotlib ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/matplotlib-1.2.x-py2.7-macosx-10.7-intel.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/matplotlib-1.2.x-py2.7-macosx-10.7-intel.egg
 echo 'Installing scipy ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/scipy-0.11.0.dev_f47d2f1_20111130-py2.7-macosx-10.7-x86_64.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/scipy-0.11.0.dev_f47d2f1_20111130-py2.7-macosx-10.7-x86_64.egg
 echo 'Installing pandas ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/pandas-0.6.1_20111130-py2.7-macosx-10.7-x86_64.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/pandas-0.6.1_20111130-py2.7-macosx-10.7-x86_64.egg
 echo 'Installing pymc ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/pymc-2.2alpha-py2.7-macosx-10.7-intel.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/pymc-2.2alpha-py2.7-macosx-10.7-intel.egg
 echo 'Installing readline ...'
-sudo "${PYTHON}" -m easy_install -N -Z readline
+${SUDO} "${PYTHON}" -m easy_install -N -Z readline
 echo 'Installing ipython ...'
-sudo "${PYTHON}" -m easy_install -N -Z ${SERVER}/ipython-0.12.beta-py2.7.egg
+${SUDO} "${PYTHON}" -m easy_install -N -Z ${SERVER}/ipython-0.12.beta-py2.7.egg
 echo 'Installing nose ...'
-sudo "${PYTHON}" -m easy_install -N -Z nose
+${SUDO} "${PYTHON}" -m easy_install -N -Z nose
 echo 'Installing DateUtils'
-sudo "${PYTHON}" -m easy_install -N -Z DateUtils
+${SUDO} "${PYTHON}" -m easy_install -N -Z DateUtils
 echo 'Done'
