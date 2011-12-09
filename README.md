@@ -12,7 +12,7 @@ OS X 10.7 (Lion), Python 2.7, Xcode 4.2
 
 ### Install
 
-Download Scipy Superpack Installer for OSX 10.7 (Updated 30 November 2011)
+[Download Scipy Superpack Installer for OSX 10.7](https://raw.github.com/fonnesbeck/ScipySuperpack/master/install_superpack.sh)
 
 To install, open a terminal in the directory that the script is located and call:
 
