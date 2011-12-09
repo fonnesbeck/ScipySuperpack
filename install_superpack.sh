@@ -4,7 +4,7 @@ GIT_DMG='git-1.7.7.3-intel-universal-snow-leopard.dmg'
 GIT_PKG='git-1.7.7.3-intel-universal-snow-leopard.pkg'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
 GFORTRAN='gfortran-lion-5666-3.pkg'
-
+SUDO='sudo'
 
 if [ -z "$VIRTUAL_ENV" ]; then
     # Standard Python env
@@ -72,8 +72,8 @@ ${SUDO} "${PYTHON}" -m easy_install -N -Z nose
 echo 'Installing DateUtils'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z DateUtils
 
-echo 'Cleaning up'
-if  [ "$local" == "n" ] || [ "$local" == "N" ]; then    
+if  [ "$local" == "n" ] || [ "$local" == "N" ]; then  
+    echo 'Cleaning up'  
     rm -rf ${SUPERPACK_PATH}
 fi
 
