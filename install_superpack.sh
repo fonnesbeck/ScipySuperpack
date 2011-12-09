@@ -59,6 +59,7 @@ if [ $? -eq 1 ]; then
     curl -o ez_setup.py http://peak.telecommunity.com/dist/ez_setup.py
     echo 'Installing ez_setup ...'
     ${SUDO} "${PYTHON}" ez_setup.py
+    rm ez_setup.py
 fi
 
 echo 'Installing Scipy Superpack ...'
@@ -72,10 +73,6 @@ echo 'Installing DateUtils'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z DateUtils
 
 echo 'Cleaning up'
-if [ -z "$VIRTUAL_ENV" ]; then
-    rm ez_setup.py
-fi
-
 if  [ "$local" == "n" ] || [ "$local" == "N" ]; then    
     rm -rf ${SUPERPACK_PATH}
 fi
