@@ -39,7 +39,7 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
     fi
     
     echo 'Cloning Scipy Superpack'
-    ${GIT_PATH}/git clone git://github.com/fonnesbeck/ScipySuperpack.git
+    ${GIT_PATH}git clone git://github.com/fonnesbeck/ScipySuperpack.git
 else
     echo 'Did not recognize input. Exiting'
     exit 0
