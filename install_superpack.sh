@@ -2,7 +2,7 @@
 PYTHON='/usr/bin/python'
 GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
-GIT_PATH='/user/local/git/bin/'
+GIT_PATH='/usr/local/git/bin/'
 GFORTRAN='gfortran-lion-5666-3.pkg'
 SUDO='sudo'
 
