@@ -2,7 +2,6 @@
 PYTHON='/usr/bin/python'
 GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
-GIT_PATH='/user/local/git/bin/'
 GFORTRAN='gfortran-lion-5666-3.pkg'
 SUDO='sudo'
 
@@ -36,10 +35,11 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
         hdiutil unmount "${GIT_VOLUME}"
         echo 'Cleaning up'
         rm ${GIT_FILENAME}.dmg
+        hash git &> /dev/null
     fi
     
     echo 'Cloning Scipy Superpack'
-    ${GIT_PATH}git clone git://github.com/fonnesbeck/ScipySuperpack.git
+    git clone git://github.com/fonnesbeck/ScipySuperpack.git
 else
     echo 'Did not recognize input. Exiting'
     exit 0
