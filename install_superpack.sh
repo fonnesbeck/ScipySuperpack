@@ -35,11 +35,13 @@ elif [ "$local" == "n" ] || [ "$local" == "N" ]; then
         hdiutil unmount "${GIT_VOLUME}"
         echo 'Cleaning up'
         rm ${GIT_FILENAME}.dmg
-        hash git &> /dev/null
+        echo 'Cloning Scipy Superpack'
+        /usr/local/git/bin/git clone git://github.com/fonnesbeck/ScipySuperpack.git
+    else
+        echo 'Cloning Scipy Superpack'
+        git clone git://github.com/fonnesbeck/ScipySuperpack.git
     fi
     
-    echo 'Cloning Scipy Superpack'
-    git clone git://github.com/fonnesbeck/ScipySuperpack.git
 else
     echo 'Did not recognize input. Exiting'
     exit 0
