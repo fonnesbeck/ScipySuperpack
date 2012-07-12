@@ -73,7 +73,12 @@ echo 'Installing nose ...'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z nose
 echo 'Installing DateUtils'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z DateUtils
-
+echo 'Installing Tornado'
+${SUDO} "${PYTHON}" -m easy_install -N -Z tornado
+echo 'Installing pyzmq'
+${SUDO} "${PYTHON}" -m easy_install -N -Z pyzmq
+echo 'Installing pika'
+${SUDO} "${PYTHON}" -m easy_install -N -Z pika
 if  [ "$local" == "n" ] || [ "$local" == "N" ]; then  
     echo 'Cleaning up'  
     rm -rf ${SUPERPACK_PATH}
