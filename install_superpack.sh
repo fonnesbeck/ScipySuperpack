@@ -79,6 +79,8 @@ echo 'Installing pyzmq'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pyzmq
 echo 'Installing pika'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pika
+echo 'Installing patsy'
+${SUDO} "${PYTHON}" -m easy_install -N -Z patsy
 if  [ "$local" == "n" ] || [ "$local" == "N" ]; then  
     echo 'Cleaning up'  
     rm -rf ${SUPERPACK_PATH}
