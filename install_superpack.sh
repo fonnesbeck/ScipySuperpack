@@ -71,7 +71,9 @@ echo 'Installing readline ...'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z readline
 echo 'Installing nose ...'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z nose
-echo 'Installing DateUtils'
+echo 'Installing six'
+${SUDO} "${PYTHON}" -m easy_install -N -Z six
+echo 'Installing python-dateutil'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
 echo 'Installing Tornado'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z tornado
