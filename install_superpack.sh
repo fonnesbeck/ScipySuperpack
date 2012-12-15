@@ -75,6 +75,8 @@ echo 'Installing six'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z six
 echo 'Installing python-dateutil'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
+echo 'Installing pytz'
+${SUDO} "${PYTHON}" -m easy_install -N -Z pytz
 echo 'Installing Tornado'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z tornado
 echo 'Installing pyzmq'
