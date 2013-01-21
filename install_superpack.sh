@@ -79,6 +79,8 @@ echo 'Installing pyzmq'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pyzmq
 echo 'Installing pika'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pika
+echo 'Installing jinja2'
+${SUDO} "${PYTHON}" -m easy_install -N -Z jinja2
 echo 'Installing patsy'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z patsy
 if  [ "$local" == "n" ] || [ "$local" == "N" ]; then  
