@@ -15,8 +15,6 @@ else
     SUDO="" #${SUDO} is not required in a virtualenv
 fi
 
-echo 'Are you installing from a repository cloned to this machine (if unsure, answer no)? (y/n)'
-read local
 if  [ -d ".git" ]; then
     
     SUPERPACK_PATH='.'
@@ -83,7 +81,7 @@ echo 'Installing jinja2'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z jinja2
 echo 'Installing patsy'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z patsy
-if  [ "$local" == "n" ] || [ "$local" == "N" ]; then  
+if  [ ! -d ".git" ]; then
     echo 'Cleaning up'  
     rm -rf ${SUPERPACK_PATH}
 fi
