@@ -34,10 +34,10 @@ else
         echo 'Cleaning up'
         rm ${GIT_FILENAME}.dmg
         echo 'Cloning Scipy Superpack'
-        /usr/local/git/bin/git clone git://github.com/fonnesbeck/ScipySuperpack.git
+        /usr/local/git/bin/git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
     else
         echo 'Cloning Scipy Superpack'
-        git clone git://github.com/fonnesbeck/ScipySuperpack.git
+        git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
     fi
 fi
 
