@@ -16,13 +16,13 @@ else
 fi
 
 if  [ -d ".git" ]; then
-    
+
     SUPERPACK_PATH='.'
-    
+
 else
-    
+
     SUPERPACK_PATH='ScipySuperpack'
-    
+
     hash git &> /dev/null
     if [ $? -eq 1 ]; then
         echo 'Downloading Git for OS X ...'
@@ -67,6 +67,8 @@ echo 'Installing nose ...'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z nose
 echo 'Installing six'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z six
+echo 'Installing pyparsing'
+${SUDO} "${PYTHON}" -m easy_install -N -Z pyparsing
 echo 'Installing python-dateutil'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
 echo 'Installing pytz'
@@ -82,7 +84,7 @@ ${SUDO} "${PYTHON}" -m easy_install -N -Z jinja2
 echo 'Installing patsy'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z patsy
 if  [ ! -d ".git" ]; then
-    echo 'Cleaning up'  
+    echo 'Cleaning up'
     rm -rf ${SUPERPACK_PATH}
 fi
 
