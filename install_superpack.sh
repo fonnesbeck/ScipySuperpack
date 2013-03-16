@@ -68,7 +68,7 @@ ${SUDO} "${PYTHON}" -m easy_install -N -Z nose
 echo 'Installing six'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z six
 echo 'Installing pyparsing'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pyparsing
+${SUDO} "${PYTHON}" -m easy_install -N -Z pyparsing==1.5.7
 echo 'Installing python-dateutil'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
 echo 'Installing pytz'
