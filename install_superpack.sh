@@ -44,7 +44,7 @@ fi
 # hash gfortran &> /dev/null
 # if [ $? -eq 1 ]; then
 echo 'Downloading gFortran ...'
-curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
+curl -o ${GFORTRAN} http://r.research.att.com/${GFORTRAN}
 echo 'Installing gFortran ...'
 ${SUDO} installer -pkg ${GFORTRAN} -target '/'
 # fi
