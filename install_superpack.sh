@@ -2,7 +2,7 @@
 PYTHON='/usr/bin/python'
 GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
-GFORTRAN='gfortran-lion-5666-3.pkg'
+GFORTRAN='gcc-42-5666.3-darwin11.pkg'
 SUDO='sudo'
 
 if [ -z "$VIRTUAL_ENV" ]; then
@@ -44,7 +44,7 @@ fi
 # hash gfortran &> /dev/null
 # if [ $? -eq 1 ]; then
 echo 'Downloading gFortran ...'
-curl -o ${GFORTRAN} http://r.research.att.com/${GFORTRAN}
+curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
 echo 'Installing gFortran ...'
 ${SUDO} installer -pkg ${GFORTRAN} -target '/'
 # fi
