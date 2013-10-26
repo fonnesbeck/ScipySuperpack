@@ -4,6 +4,7 @@ GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
 GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
 GFORTRAN='gcc-42-5666.3-darwin11.pkg'
 SUDO='sudo'
+BRANCH='master'
 
 if [ -z "$VIRTUAL_ENV" ]; then
     # Standard Python env
@@ -25,29 +26,40 @@ else
 
     hash git &> /dev/null
     if [ $? -eq 1 ]; then
-        echo 'Downloading Git for OS X ...'
-        curl -o ${GIT_FILENAME}.dmg http://git-osx-installer.googlecode.com/files/${GIT_FILENAME}.dmg
-        echo 'Installing Git ...'
-        hdiutil mount ${GIT_FILENAME}.dmg
-        ${SUDO} installer -pkg "${GIT_VOLUME}${GIT_FILENAME}.pkg" -target '/'
-        hdiutil unmount "${GIT_VOLUME}"
-        echo 'Cleaning up'
-        rm ${GIT_FILENAME}.dmg
-        echo 'Cloning Scipy Superpack'
-        /usr/local/git/bin/git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
+        hash brew &> /dev/null
+        if [ $? -eq 1 ]; then
+            echo 'Downloading Git for OS X ...'
+            curl -o ${GIT_FILENAME}.dmg http://git-osx-installer.googlecode.com/files/${GIT_FILENAME}.dmg
+            echo 'Installing Git ...'
+            hdiutil mount ${GIT_FILENAME}.dmg
+            ${SUDO} installer -pkg "${GIT_VOLUME}${GIT_FILENAME}.pkg" -target '/'
+            hdiutil unmount "${GIT_VOLUME}"
+            echo 'Cleaning up'
+            rm ${GIT_FILENAME}.dmg
+            echo 'Cloning Scipy Superpack'
+            /usr/local/git/bin/git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
+        else
+            brew install git
+            echo 'Cloning Scipy Superpack'
+            git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
+        fi
     else
         echo 'Cloning Scipy Superpack'
         git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
     fi
+
+    git checkout "${BRANCH}"
 fi
 
-# hash gfortran &> /dev/null
-# if [ $? -eq 1 ]; then
-echo 'Downloading gFortran ...'
-curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
-echo 'Installing gFortran ...'
-${SUDO} installer -pkg ${GFORTRAN} -target '/'
-# fi
+hash brew &> /dev/null
+if [ $? -eq 1 ]; then
+    echo 'Downloading gFortran ...'
+    curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
+    echo 'Installing gFortran ...'
+    ${SUDO} installer -pkg ${GFORTRAN} -target '/'
+else
+    brew install gfortran
+fi
 
 hash easy_install &> /dev/null
 if [ $? -eq 1 ]; then
