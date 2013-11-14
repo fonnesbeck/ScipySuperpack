@@ -41,14 +41,13 @@ else
         else
             brew install git
             echo 'Cloning Scipy Superpack'
-            git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
+            git clone -b "${BRANCH}" --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
         fi
     else
         echo 'Cloning Scipy Superpack'
-        git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
+        git clone -b "${BRANCH}" --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
     fi
 
-    git checkout "${BRANCH}"
 fi
 
 hash brew &> /dev/null
