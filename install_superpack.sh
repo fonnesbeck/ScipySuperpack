@@ -48,7 +48,9 @@ else
         git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
     fi
 
+    cd ${SUPERPACK_PATH}
     git checkout "${BRANCH}"
+    cd ..
 fi
 
 hash brew &> /dev/null
