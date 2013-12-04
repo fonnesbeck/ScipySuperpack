@@ -88,7 +88,7 @@ ${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
 echo 'Installing pytz'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pytz
 echo 'Installing Tornado'
-${SUDO} "${PYTHON}" -m easy_install -N -Z tornado
+${SUDO} "${PYTHON}" -m easy_install -N -Z tornado==3.1.1
 echo 'Installing pyzmq'
 ${SUDO} "${PYTHON}" -m easy_install -N -Z pyzmq
 echo 'Installing pika'
