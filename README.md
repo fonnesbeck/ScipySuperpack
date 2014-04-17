@@ -1,14 +1,14 @@
 # Scipy Superpack
 
-## Recent builds of fundamental Python scientific computing packages for OS X 
+## Recent builds of fundamental Python scientific computing packages for OS X
 
-This shell script will install recent 64-bit builds of [Numpy](https://github.com/numpy/numpy) (1.8) and [Scipy](https://github.com/scipy/scipy) (0.13), [Matplotlib](https://github.com/matplotlib/matplotlib) (1.4), [IPython](https://github.com/ipython/ipython) (1.0), [Pandas](https://github.com/pydata/pandas) (0.12), [Statsmodels](https://github.com/statsmodels/statsmodels) (0.5.0), [Scikit-Learn](https://github.com/scikit-learn/scikit-learn) (0.14), and [PyMC](https://github.com/pymc-devs/pymc) (2.2 alpha) for OS X 10.7 (Lion) on Intel Macintosh. All builds are based on recent development code from each package, which means though some bugs may be fixed and features added, they also may be more unstable than the official releases. Distributing them together should improve interoperability, since the supporting packages (Scipy, Matplotlib, PyMC) were all built against the accompanying build of Numpy. These packages were compiled on OS X 10.7 using Apple’s Python 2.7.1, gFortran 4.2.4 and GCC 4.2.1. To avoid compatibility issues, the installer also optionally downloads and installs the gFortran compiler that is compatible with Xcode 4.2. Before you install the Superpack, ensure that Xcode 4.3.2 is installed on your system.
+This shell script will install recent 64-bit builds of [Numpy](https://github.com/numpy/numpy) (1.8) and [Scipy](https://github.com/scipy/scipy) (0.13), [Matplotlib](https://github.com/matplotlib/matplotlib) (1.4), [IPython](https://github.com/ipython/ipython) (1.0), [Pandas](https://github.com/pydata/pandas) (0.12), [Statsmodels](https://github.com/statsmodels/statsmodels) (0.5.0), [Scikit-Learn](https://github.com/scikit-learn/scikit-learn) (0.14), and [PyMC](https://github.com/pymc-devs/pymc) (2.2 alpha) for OS X 10.9 (Lion) on Intel Macintosh. All builds are based on recent development code from each package, which means though some bugs may be fixed and features added, they also may be more unstable than the official releases. Distributing them together should improve interoperability, since the supporting packages (Scipy, Matplotlib, PyMC) were all built against the accompanying build of Numpy. These packages were compiled on OS X 10.9 using Apple’s Python 2.7.5, gFortran 4.2.4 and GCC 4.2.1. To avoid compatibility issues, the installer also optionally downloads and installs the gFortran compiler that is compatible with Xcode 4.2. Before you install the Superpack, ensure that Xcode command line tools are installed on your system.
 
 Caveat emptor: These builds contain development (i.e. pre-release) code that may not be free of critical bugs. I encourage all users to run the appropriate unit tests on each package to ensure that any extant issues do not affect your work. Please report any errors that may be the result of build issues.
 
 ### Dependencies
 
-OS X 10.7 (Lion), Python 2.7, Xcode 4.3.2
+OS X 10.9 (Mavericks), Python 2.7.5, Xcode 5.1 command line tools
 
 ### Install
 
