@@ -60,7 +60,7 @@ if [ $? -eq 1 ]; then
     echo 'Installing gFortran ...'
     ${SUDO} installer -pkg ${GFORTRAN} -target '/'
 else
-    brew install gfortran
+    brew install gcc
 fi
 
 hash easy_install &> /dev/null
