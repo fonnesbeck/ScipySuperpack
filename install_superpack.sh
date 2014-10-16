@@ -1,109 +1,72 @@
 #!/bin/sh
-PYTHON='/usr/bin/python'
-GIT_FILENAME='git-1.7.7.3-intel-universal-snow-leopard'
-GIT_VOLUME='/Volumes/Git 1.7.7.3 Snow Leopard Intel Universal/'
-GFORTRAN='gcc-42-5666.3-darwin11.pkg'
-SUDO='sudo'
-BRANCH='master'
-
-if [ -z "$VIRTUAL_ENV" ]; then
-    # Standard Python env
-    PYTHON=/usr/bin/python
-    SUDO=${SUDO}
-else
-    # Virtualenv
-    PYTHON=python
-    SUDO="" #${SUDO} is not required in a virtualenv
-fi
-
-if  [ -d ".git" ]; then
-
-    SUPERPACK_PATH='.'
-
-else
-
-    SUPERPACK_PATH='ScipySuperpack'
-
-    hash git &> /dev/null
-    if [ $? -eq 1 ]; then
-        hash brew &> /dev/null
-        if [ $? -eq 1 ]; then
-            echo 'Downloading Git for OS X ...'
-            curl -o ${GIT_FILENAME}.dmg http://git-osx-installer.googlecode.com/files/${GIT_FILENAME}.dmg
-            echo 'Installing Git ...'
-            hdiutil mount ${GIT_FILENAME}.dmg
-            ${SUDO} installer -pkg "${GIT_VOLUME}${GIT_FILENAME}.pkg" -target '/'
-            hdiutil unmount "${GIT_VOLUME}"
-            echo 'Cleaning up'
-            rm ${GIT_FILENAME}.dmg
-            echo 'Cloning Scipy Superpack'
-            /usr/local/git/bin/git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
-        else
-            brew install git
-            echo 'Cloning Scipy Superpack'
-            git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
-        fi
-    else
-        echo 'Cloning Scipy Superpack'
-        git clone --depth=1 git://github.com/fonnesbeck/ScipySuperpack.git
-    fi
-
-    cd ${SUPERPACK_PATH}
-    git checkout "${BRANCH}"
-    cd ..
-fi
 
 hash brew &> /dev/null
 if [ $? -eq 1 ]; then
-    echo 'Downloading gFortran ...'
-    curl -o ${GFORTRAN} http://r.research.att.com/tools/${GFORTRAN}
-    echo 'Installing gFortran ...'
-    ${SUDO} installer -pkg ${GFORTRAN} -target '/'
-else
-    brew install gcc
+    echo 'Installing Homebrew ...'
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
-hash easy_install &> /dev/null
+# Ensure Homebrew formulae are updated
+brew update
+
+hash git &> /dev/null
 if [ $? -eq 1 ]; then
-    echo 'Downloading ez_setup ...'
-    curl -o ez_setup.py http://peak.telecommunity.com/dist/ez_setup.py
-    echo 'Installing ez_setup ...'
-    ${SUDO} "${PYTHON}" ez_setup.py
-    rm ez_setup.py
+    echo 'Installing Git ...'
+    brew install git
 fi
 
-echo 'Installing Scipy Superpack ...'
-${SUDO} "${PYTHON}" -m easy_install -N -Z ${SUPERPACK_PATH}/*.egg
-
-echo 'Installing readline ...'
-${SUDO} "${PYTHON}" -m easy_install -N -Z readline
-echo 'Installing nose ...'
-${SUDO} "${PYTHON}" -m easy_install -N -Z nose
-echo 'Installing six'
-${SUDO} "${PYTHON}" -m easy_install -N -Z six
-echo 'Installing pyparsing'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pyparsing==1.5.7
-echo 'Installing python-dateutil'
-${SUDO} "${PYTHON}" -m easy_install -N -Z python-dateutil
-echo 'Installing pytz'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pytz
-echo 'Installing Tornado'
-${SUDO} "${PYTHON}" -m easy_install -N -Z tornado==3.1.1
-echo 'Installing pyzmq'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pyzmq
-echo 'Installing pika'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pika
-echo 'Installing jinja2'
-${SUDO} "${PYTHON}" -m easy_install jinja2
-echo 'Installing patsy'
-${SUDO} "${PYTHON}" -m easy_install -N -Z patsy
-echo 'Installing pygments'
-${SUDO} "${PYTHON}" -m easy_install -N -Z pygments
-echo 'Installing sphinx'
-${SUDO} "${PYTHON}" -m easy_install -N -Z sphinx
-if  [ ! -d ".git" ]; then
-    echo 'Cleaning up'
-    rm -rf ${SUPERPACK_PATH}
+hash gcc &> /dev/null
+if [ $? -eq 1 ]; then
+    echo 'No gcc detected; Installing XCode Command Line Tools ...'
+    xcode-select --install
 fi
 
-echo 'Done'
+# Add science tap
+brew tap homebrew/science
+
+# Python tools and utilities
+brew install python
+brew install gcc
+pip install -U nose
+pip install -U six
+pip install -U patsy
+pip install -U pygments
+pip install -U sphinx
+pip install -U cython
+
+# IPython
+brew install zeromq
+pip install -U jinja2
+pip install -U tornado
+pip install -U pyzmq
+pip install -U git+git://github.com/ipython/ipython.git
+
+# OpenBLAS for NumPy/SciPy
+brew install openblas
+export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
+export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
+
+# Build from cloned repo to avoid SciPy build issue
+git clone git@github.com:numpy/numpy.git numpy_temp
+cd numpy_temp
+python setupegg.py bdist_egg
+easy_install dist/*egg
+cd ..
+rm -rf numpy_temp
+
+# SciPy
+pip install -U git+git://github.com/scipy/scipy#egg=scipy-dev
+
+# Matplotlib
+brew install freetype
+pip install -U git+git://github.com/matplotlib/matplotlib.git
+
+# Rest of the stack
+pip install -U git+git://github.com/pydata/pandas.git 
+pip install -U git+git://github.com/scikit-learn/scikit-learn.git
+pip install -U git+git://github.com/pymc-devs/pymc.git@2.3
+pip install -U git+git://github.com/statsmodels/statsmodels.git
+pip install -U git+git://github.com/Theano/Theano.git
+
+# Release version of Bokeh
+pip install -U bokeh
