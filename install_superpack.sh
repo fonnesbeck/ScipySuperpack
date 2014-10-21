@@ -3,7 +3,7 @@
 hash brew &> /dev/null
 if [ $? -eq 1 ]; then
     echo 'Installing Homebrew ...'
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Ensure Homebrew formulae are updated
