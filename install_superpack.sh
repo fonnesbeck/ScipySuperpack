@@ -47,7 +47,7 @@ export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
 export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
 
 # Build from cloned repo to avoid SciPy build issue
-git clone git@github.com:numpy/numpy.git numpy_temp
+git clone https://github.com/numpy/numpy.git numpy_temp
 cd numpy_temp
 python setupegg.py bdist_egg
 easy_install dist/*egg
