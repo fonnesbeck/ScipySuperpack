@@ -52,6 +52,7 @@ brew install zeromq
 pip install -U jinja2
 pip install -U tornado
 pip install -U pyzmq
+pip install -U jsonschema
 pip install -U git+git://github.com/ipython/ipython.git
 
 # OpenBLAS for NumPy/SciPy
