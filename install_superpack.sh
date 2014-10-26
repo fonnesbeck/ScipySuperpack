@@ -25,7 +25,20 @@ fi
 brew tap homebrew/science
 
 # Python tools and utilities
-brew install python
+echo 'Would you like to install Python 2.7 or Python 3.4? (2/3)'
+read pyversion
+if  [ "$pyversion" == "2" ]; then
+    
+    brew install python
+    
+elif [ "$pyversion" == "3" ]; then
+    
+    brew install python3
+    
+else
+    echo "Invalid selection. Quitting."
+    exit 0
+fi
 brew install gcc
 pip install -U nose
 pip install -U six
