@@ -1,4 +1,5 @@
 #!/bin/sh
+PIP_PATH='/usr/local/bin'
 
 hash brew &> /dev/null
 if [ $? -eq 1 ]; then
@@ -25,35 +26,38 @@ fi
 brew tap homebrew/science
 
 # Python tools and utilities
-echo 'Would you like to install Python 2.7 or Python 3.4? (2/3)'
+echo 'Would you like to use Python 2.7 or Python 3.4? (2/3)'
 read pyversion
 if  [ "$pyversion" == "2" ]; then
     
     brew install python
+    PIP=$PIP_PATH/pip2
     
 elif [ "$pyversion" == "3" ]; then
     
     brew install python3
+    PIP=$PIP_PATH/pip3
     
 else
     echo "Invalid selection. Quitting."
     exit 0
 fi
+echo $PIP
 brew install gcc
-pip install -U nose
-pip install -U six
-pip install -U patsy
-pip install -U pygments
-pip install -U sphinx
-pip install -U cython
+"${PIP}" install -U nose
+"${PIP}" install -U six
+"${PIP}" install -U patsy
+"${PIP}" install -U pygments
+"${PIP}" install -U sphinx
+"${PIP}" install -U cython
 
 # IPython
 brew install zeromq
-pip install -U jinja2
-pip install -U tornado
-pip install -U pyzmq
-pip install -U jsonschema
-pip install -U git+git://github.com/ipython/ipython.git
+"${PIP}" install -U jinja2
+"${PIP}" install -U tornado
+"${PIP}" install -U pyzmq
+"${PIP}" install -U jsonschema
+"${PIP}" install -U git+git://github.com/ipython/ipython.git
 
 # OpenBLAS for NumPy/SciPy
 brew install openblas
@@ -69,18 +73,18 @@ cd ..
 rm -rf numpy_temp
 
 # SciPy
-pip install -U git+git://github.com/scipy/scipy#egg=scipy-dev
+"${PIP}" install -U git+git://github.com/scipy/scipy#egg=scipy-dev
 
 # Matplotlib
 brew install freetype
-pip install -U git+git://github.com/matplotlib/matplotlib.git
+"${PIP}" install -U git+git://github.com/matplotlib/matplotlib.git
 
 # Rest of the stack
-pip install -U git+git://github.com/pydata/pandas.git 
-pip install -U git+git://github.com/scikit-learn/scikit-learn.git
-pip install -U git+git://github.com/pymc-devs/pymc.git@2.3
-pip install -U git+git://github.com/statsmodels/statsmodels.git
-pip install -U git+git://github.com/Theano/Theano.git
+"${PIP}" install -U git+git://github.com/pydata/pandas.git 
+"${PIP}" install -U git+git://github.com/scikit-learn/scikit-learn.git
+"${PIP}" install -U git+git://github.com/pymc-devs/pymc.git@2.3
+"${PIP}" install -U git+git://github.com/statsmodels/statsmodels.git
+"${PIP}" install -U git+git://github.com/Theano/Theano.git
 
 # Release version of Bokeh
-pip install -U bokeh
+"${PIP}" install -U bokeh
