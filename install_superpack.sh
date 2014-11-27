@@ -31,12 +31,12 @@ read pyversion
 if  [ "$pyversion" == "2" ]; then
     
     brew install python
-    PIP=$PIP_PATH/pip2
+    PIP="${PIP_PATH}/pip2"
     
 elif [ "$pyversion" == "3" ]; then
     
     brew install python3
-    PIP=$PIP_PATH/pip3
+    PIP="${PIP_PATH}/pip3"
     
 else
     echo "Invalid selection. Quitting."
