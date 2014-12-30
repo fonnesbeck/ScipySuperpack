@@ -1,86 +1,102 @@
-#!/bin/sh
+#!/bin/bash
 
-hash brew &> /dev/null
-if [ $? -eq 1 ]; then
-    echo 'Installing Homebrew ...'
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# set -euvx
+
+cd "$(mktemp -d -t install_superpack)"
+
+readonly BREW_PATH="/usr/local/bin"
+readonly BREW="${BREW_PATH}/brew"
+readonly GIT="${BREW_PATH}/git"
+
+if ! [[ -x "${BREW}" ]]; then
+    if [[ "${BREW_PATH}" == /usr/local/bin ]]; then
+        # Installing Homebrew...
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo 'You are using a custom homebrew location and I could not find the brew binary.'
+        exit 1
+    fi
 fi
 
-# Ensure Homebrew formulae are updated
-brew update
-
-hash git &> /dev/null
-if [ $? -eq 1 ]; then
-    echo 'Installing Git ...'
-    brew install git
-fi
-
-hash gcc &> /dev/null
-if [ $? -eq 1 ]; then
-    echo 'No gcc detected; Installing XCode Command Line Tools ...'
+if ! [[ -x /usr/bin/clang ]]; then
+    # No clang detected; Installing XCode Command Line Tools...
     xcode-select --install
 fi
 
+export PATH="${BREW_PATH}:${PATH}"
+
+# Ensure Homebrew formulae are updated
+"${BREW}" update
+
+if ! [[ -x "${GIT}" ]]; then
+    "${BREW}" install git
+fi
+
 # Add science tap
-brew tap homebrew/science
+"${BREW}" tap homebrew/science
 
 # Python tools and utilities
-echo 'Would you like to install Python 2.7 or Python 3.4? (2/3)'
-read pyversion
-if  [ "$pyversion" == "2" ]; then
-    
-    brew install python
-    
-elif [ "$pyversion" == "3" ]; then
-    
-    brew install python3
-    
+echo 'Would you like to use Python 2.7 or Python 3.4? (2/3)'
+read -p '> ' PYVERSION
+readonly PYVERSION
+
+if [[ "${PYVERSION}" == "2" ]]; then
+    "${BREW}" install python
+    readonly PYTHON="${BREW_PATH}/python"
+    readonly EASY_INSTALL="${BREW_PATH}/easy_install"
+    readonly PIP="${BREW_PATH}/pip"
+elif [[ "${PYVERSION}" == "3" ]]; then
+    "${BREW}" install python3
+    readonly PYTHON="${BREW_PATH}/python3"
+    readonly EASY_INSTALL="${BREW_PATH}/easy_install-3.4"
+    readonly PIP="${BREW_PATH}/pip3"
 else
     echo "Invalid selection. Quitting."
-    exit 0
+    exit 1
 fi
-brew install gcc
-pip install -U nose
-pip install -U six
-pip install -U patsy
-pip install -U pygments
-pip install -U sphinx
-pip install -U cython
+
+"${BREW}" install gcc
+"${PIP}" install -U nose
+"${PIP}" install -U six
+"${PIP}" install -U patsy
+"${PIP}" install -U pygments
+"${PIP}" install -U sphinx
+"${PIP}" install -U cython
 
 # IPython
-brew install zeromq
-pip install -U jinja2
-pip install -U tornado
-pip install -U pyzmq
-pip install -U jsonschema
-pip install -U git+git://github.com/ipython/ipython.git
+"${BREW}" install zeromq
+"${PIP}" install -U jinja2
+"${PIP}" install -U tornado
+"${PIP}" install -U pyzmq
+"${PIP}" install -U jsonschema
+"${PIP}" install -U git+git://github.com/ipython/ipython.git
 
 # OpenBLAS for NumPy/SciPy
-brew install openblas
+"${BREW}" install openblas
 export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
 export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
 
 # Build from cloned repo to avoid SciPy build issue
-git clone https://github.com/numpy/numpy.git numpy_temp
+"${GIT}" clone https://github.com/numpy/numpy.git numpy_temp
 cd numpy_temp
-python setupegg.py bdist_egg
-easy_install dist/*egg
+"${PYTHON}" setupegg.py bdist_egg
+"${EASY_INSTALL}" dist/*egg
 cd ..
 rm -rf numpy_temp
 
 # SciPy
-pip install -U git+git://github.com/scipy/scipy#egg=scipy-dev
+"${PIP}" install -U git+git://github.com/scipy/scipy#egg=scipy-dev
 
 # Matplotlib
-brew install freetype
-pip install -U git+git://github.com/matplotlib/matplotlib.git
+"${BREW}" install freetype
+"${PIP}" install -U git+git://github.com/matplotlib/matplotlib.git
 
 # Rest of the stack
-pip install -U git+git://github.com/pydata/pandas.git 
-pip install -U git+git://github.com/scikit-learn/scikit-learn.git
-pip install -U git+git://github.com/pymc-devs/pymc.git@2.3
-pip install -U git+git://github.com/statsmodels/statsmodels.git
-pip install -U git+git://github.com/Theano/Theano.git
+"${PIP}" install -U git+git://github.com/pydata/pandas.git 
+"${PIP}" install -U git+git://github.com/scikit-learn/scikit-learn.git
+"${PIP}" install -U git+git://github.com/pymc-devs/pymc.git@2.3
+"${PIP}" install -U git+git://github.com/statsmodels/statsmodels.git
+"${PIP}" install -U git+git://github.com/Theano/Theano.git
 
 # Release version of Bokeh
-pip install -U bokeh
+"${PIP}" install -U bokeh
