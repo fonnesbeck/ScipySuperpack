@@ -1,12 +1,10 @@
 #!/bin/bash
 
-set -euvx
+# set -euvx
 
 cd "$(mktemp -d -t install_superpack)"
 
-# TODO: changed for testing, set back to /usr/local/bin before making public
-# readonly BREW_PATH="/usr/local/bin"
-readonly BREW_PATH="/Users/kat/Desktop/tmp/homebrew/bin"
+readonly BREW_PATH="/usr/local/bin"
 readonly BREW="${BREW_PATH}/brew"
 readonly GIT="${BREW_PATH}/git"
 
