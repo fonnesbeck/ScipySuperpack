@@ -1,0 +1,27 @@
+The Scipy Superpack package installs:
+bokeh - http://bokeh.pydata.org/en/latest/
+cython - http://cython.org/
+freetype - http://www.freetype.org/
+gcc - https://gcc.gnu.org/
+iPython - http://ipython.org/
+Jinja2 - http://jinja.pocoo.org/docs/dev/
+jsonschema - https://pypi.python.org/pypi/jsonschema
+matplotlib - http://matplotlib.org/
+nose - https://nose.readthedocs.org/en/latest/
+NumPy - http://www.numpy.org/
+OpenBLAS - http://www.openblas.net/
+pandas - http://pandas.pydata.org/
+patsy - http://patsy.readthedocs.org/en/latest/overview.html
+pip - https://pypi.python.org/pypi/pip
+pygments - http://pygments.org/
+PyMC - http://pymc-devs.github.io/pymc/
+python - https://www.python.org/
+pyzmq - http://zeromq.github.io/pyzmq/
+scikit-learn - http://scikit-learn.org/stable/
+SciPy - http://www.scipy.org/
+six - https://pypi.python.org/pypi/six
+sphinx - http://sphinx-doc.org/latest/index.html
+statsmodels - http://statsmodels.sourceforge.net/index.html
+Theano - http://deeplearning.net/software/theano/
+tornado - https://pypi.python.org/pypi/tornado
+ZeroMQ - http://zeromq.org/
