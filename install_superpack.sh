@@ -69,7 +69,7 @@ fi
 "${PIP}" install -U tornado
 "${PIP}" install -U pyzmq
 "${PIP}" install -U jsonschema
-"${PIP}" install -U git+git://github.com/ipython/ipython.git
+"${PIP}" install -U ipython
 
 # OpenBLAS for NumPy/SciPy
 "${BREW}" install openblas
