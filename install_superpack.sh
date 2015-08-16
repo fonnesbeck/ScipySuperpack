@@ -63,13 +63,9 @@ fi
 "${PIP}" install -U sphinx
 "${PIP}" install -U cython
 
-# IPython
+# Jupyter
 "${BREW}" install zeromq
-"${PIP}" install -U jinja2
-"${PIP}" install -U tornado
-"${PIP}" install -U pyzmq
-"${PIP}" install -U jsonschema
-"${PIP}" install -U ipython
+"${PIP}" install -U jupyter
 
 # OpenBLAS for NumPy/SciPy
 "${BREW}" install openblas
@@ -98,5 +94,5 @@ rm -rf numpy_temp
 "${PIP}" install -U git+git://github.com/statsmodels/statsmodels.git
 "${PIP}" install -U git+git://github.com/Theano/Theano.git
 
-# Release version of Bokeh
-"${PIP}" install -U bokeh
+# Release version of Bokeh and Seaborn
+"${PIP}" install -U bokeh seaborn
