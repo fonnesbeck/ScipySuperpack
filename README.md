@@ -2,13 +2,13 @@
 
 ## Recent builds of fundamental Python scientific computing packages for OS X
 
-This shell script will build and install the Python scientific stack, including [Numpy](https://github.com/numpy/numpy), [Scipy](https://github.com/scipy/scipy), [Matplotlib](https://github.com/matplotlib/matplotlib), [IPython](https://github.com/ipython/ipython), [Pandas](https://github.com/pydata/pandas), [Statsmodels](https://github.com/statsmodels/statsmodels), [Scikit-Learn](https://github.com/scikit-learn/scikit-learn), and [PyMC](https://github.com/pymc-devs/pymc) for OS X 10.10 (Yosemite) using the [Homebrew](http://brew.sh) package manager. The script will use recent development code from each package, which means that though some bugs may be fixed and features added, they also may be more unstable than the official releases. 
+This shell script will build and install the Python scientific stack, including [Numpy](https://github.com/numpy/numpy), [Scipy](https://github.com/scipy/scipy), [Matplotlib](https://github.com/matplotlib/matplotlib), [Jupyter](https://github.com/jupyter/jupyter), [Pandas](https://github.com/pydata/pandas), [Statsmodels](https://github.com/statsmodels/statsmodels), [Scikit-Learn](https://github.com/scikit-learn/scikit-learn), and [PyMC](https://github.com/pymc-devs/pymc) for OS X 10.10 (Yosemite) using the [Homebrew](http://brew.sh) package manager. The script will use recent development code from each package, which means that though some bugs may be fixed and features added, they also may be more unstable than the official releases. 
 
 The SuperPack will install Python 2.7 or 3.2 from Homebrew and build all packages against it. 
 
 ### Dependencies
 
-OS X 10.10 (Yosemite)
+OS X 10.10 (Yosemite) or OS X 10.11 (El Capitan)
 
 ### Install
 
