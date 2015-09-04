@@ -67,10 +67,16 @@ fi
 "${BREW}" install zeromq
 "${PIP}" install -U jupyter
 
-# OpenBLAS for NumPy/SciPy
-"${BREW}" install openblas
-export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
-export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
+echo 'Would you like to use the Accelerate framework instead of OpenBLAS? (y/n)'
+read -p '> ' USEACCEL
+readonly USEACCEL
+
+if [[ "USEACCEL" != "y" ]]; then
+    # OpenBLAS for NumPy/SciPy
+    "${BREW}" install openblas
+    export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
+    export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
+fi
 
 # Build from cloned repo to avoid SciPy build issue
 "${GIT}" clone https://github.com/numpy/numpy.git numpy_temp
