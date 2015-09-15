@@ -36,7 +36,7 @@ fi
 "${BREW}" tap homebrew/science
 
 # Python tools and utilities
-echo 'Would you like to use Python 2.7 or Python 3.4? (2/3)'
+echo 'Would you like to use Python 2.7 or Python 3.5? (2/3)'
 read -p '> ' PYVERSION
 readonly PYVERSION
 
@@ -48,7 +48,7 @@ if [[ "${PYVERSION}" == "2" ]]; then
 elif [[ "${PYVERSION}" == "3" ]]; then
     "${BREW}" install python3
     readonly PYTHON="${BREW_PATH}/python3"
-    readonly EASY_INSTALL="${BREW_PATH}/easy_install-3.4"
+    readonly EASY_INSTALL="${BREW_PATH}/easy_install-3.5"
     readonly PIP="${BREW_PATH}/pip3"
 else
     echo "Invalid selection. Quitting."
@@ -58,7 +58,6 @@ fi
 "${BREW}" install gcc
 "${PIP}" install -U nose
 "${PIP}" install -U six
-"${PIP}" install -U patsy
 "${PIP}" install -U pygments
 "${PIP}" install -U sphinx
 "${PIP}" install -U cython
@@ -66,17 +65,6 @@ fi
 # Jupyter
 "${BREW}" install zeromq
 "${PIP}" install -U jupyter
-
-echo 'Would you like to use the Accelerate framework instead of OpenBLAS? (y/n)'
-read -p '> ' USEACCEL
-readonly USEACCEL
-
-if [[ "USEACCEL" != "y" ]]; then
-    # OpenBLAS for NumPy/SciPy
-    "${BREW}" install openblas
-    export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
-    export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
-fi
 
 # Build from cloned repo to avoid SciPy build issue
 "${GIT}" clone https://github.com/numpy/numpy.git numpy_temp
@@ -87,7 +75,7 @@ cd ..
 rm -rf numpy_temp
 
 # SciPy
-"${PIP}" install -U git+git://github.com/scipy/scipy#egg=scipy-dev
+"${PIP}" install -U git+git://github.com/scipy/scipy
 
 # Matplotlib
 "${BREW}" install freetype
@@ -102,3 +90,6 @@ rm -rf numpy_temp
 
 # Release version of Bokeh and Seaborn
 "${PIP}" install -U bokeh seaborn
+
+# Install patsy
+"${PIP}" install -U patsy
