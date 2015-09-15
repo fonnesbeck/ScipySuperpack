@@ -66,11 +66,6 @@ fi
 "${BREW}" install zeromq
 "${PIP}" install -U jupyter
 
-# OpenBLAS for NumPy/SciPy
-"${BREW}" install openblas
-export BLAS=/usr/local/opt/openblas/lib/libopenblas.a
-export LAPACK=/usr/local/opt/openblas/lib/libopenblas.a
-
 # Build from cloned repo to avoid SciPy build issue
 "${GIT}" clone https://github.com/numpy/numpy.git numpy_temp
 cd numpy_temp
@@ -80,7 +75,7 @@ cd ..
 rm -rf numpy_temp
 
 # SciPy
-"${PIP}" install -U git+git://github.com/scipy/scipy#egg=scipy-dev
+"${PIP}" install -U git+git://github.com/scipy/scipy
 
 # Matplotlib
 "${BREW}" install freetype
@@ -96,5 +91,6 @@ rm -rf numpy_temp
 # Release version of Bokeh and Seaborn
 "${PIP}" install -U bokeh seaborn
 
-# Patsy
+# Install patsy
 "${PIP}" install -U patsy
+
