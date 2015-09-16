@@ -84,7 +84,7 @@ rm -rf numpy_temp
 # Rest of the stack
 "${PIP}" install -U git+git://github.com/pydata/pandas.git 
 "${PIP}" install -U git+git://github.com/scikit-learn/scikit-learn.git
-"${PIP}" install -U git+git://github.com/pymc-devs/pymc.git@2.3
+"${PIP}" install -U git+git://github.com/pymc-devs/pymc.git
 "${PIP}" install -U git+git://github.com/statsmodels/statsmodels.git
 "${PIP}" install -U git+git://github.com/Theano/Theano.git
 
