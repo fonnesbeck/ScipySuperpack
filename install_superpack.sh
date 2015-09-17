@@ -32,8 +32,8 @@ if ! [[ -x "${GIT}" ]]; then
     "${BREW}" install git
 fi
 
-# Add science tap
-"${BREW}" tap homebrew/science
+# Add Python tap
+"${BREW}" tap homebrew/python
 
 # Python tools and utilities
 echo 'Would you like to use Python 2.7 or Python 3.5? (2/3)'
@@ -45,19 +45,21 @@ if [[ "${PYVERSION}" == "2" ]]; then
     readonly PYTHON="${BREW_PATH}/python"
     readonly EASY_INSTALL="${BREW_PATH}/easy_install"
     readonly PIP="${BREW_PATH}/pip"
+    readonly FLAGS="--with-python"
 elif [[ "${PYVERSION}" == "3" ]]; then
     "${BREW}" install python3
     readonly PYTHON="${BREW_PATH}/python3"
     readonly EASY_INSTALL="${BREW_PATH}/easy_install-3.5"
     readonly PIP="${BREW_PATH}/pip3"
+    readonly FLAGS="--with-python3 --without-python"
 else
     echo "Invalid selection. Quitting."
     exit 1
 fi
 
+"${PIP}" install --upgrade pip setuptools
+
 "${BREW}" install gcc
-"${PIP}" install -U nose
-"${PIP}" install -U six
 "${PIP}" install -U pygments
 "${PIP}" install -U sphinx
 "${PIP}" install -U cython
@@ -66,20 +68,17 @@ fi
 "${BREW}" install zeromq
 "${PIP}" install -U jupyter
 
-# Build from cloned repo to avoid SciPy build issue
-"${GIT}" clone https://github.com/numpy/numpy.git numpy_temp
-cd numpy_temp
-"${PYTHON}" setupegg.py bdist_egg
-"${EASY_INSTALL}" dist/*egg
-cd ..
-rm -rf numpy_temp
+# NumPy and SciPy
+"${BREW}" install numpy "${FLAGS}"
+"${BREW}" link --overwrite numpy
+"${BREW}" install scipy --default-fortran-flags "${FLAGS}"
 
-# SciPy
-"${PIP}" install -U git+git://github.com/scipy/scipy
+# Numba
+"${BREW}" install numba "${FLAGS}"
 
 # Matplotlib
 "${BREW}" install freetype
-"${PIP}" install -U git+git://github.com/matplotlib/matplotlib.git
+"${BREW}" install matplotlib "${FLAGS}"
 
 # Rest of the stack
 "${PIP}" install -U git+git://github.com/pydata/pandas.git 
